@@ -20,7 +20,7 @@
         </div>
         <div class="ml-auto flex h-full items-center">
           <profile-image v-if="isLoggedIn" />
-          <action-button v-else />
+          <action-button v-else @click="toggleLogin" />
           <h2 class="ml-8 flex h-full items-center">Developed by {{ author }}</h2>
         </div>
       </div>
@@ -45,6 +45,11 @@ export default {
       url: 'https://careers.google.com',
       menuItems: ['Teams', 'Locations', 'Life at Solid Corp', 'How we hire', 'Students', 'Jobs'],
       isLoggedIn: false
+    }
+  },
+  methods: {
+    toggleLogin() {
+      this.isLoggedIn = !this.isLoggedIn
     }
   }
 }
