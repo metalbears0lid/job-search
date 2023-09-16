@@ -20,7 +20,7 @@
         </div>
         <div class="ml-auto flex h-full items-center">
           <profile-image v-if="isLoggedIn" />
-          <action-button v-else text="Sign In" @click="toggleLogin" />
+          <action-button v-else text="Sign In" :is-primary="false" @click="toggleLogin" />
           <h2 class="ml-8 flex h-full items-center">Developed by {{ author }}</h2>
         </div>
       </div>

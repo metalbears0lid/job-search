@@ -1,6 +1,6 @@
 <template>
   <button
-    class="border-0 rounded px-5 py-2 font-medium text-white bg-brand-blue-1 hover:shadow-blue"
+    :class="buttonClass"
   >
     {{ text }}
   </button>
@@ -9,6 +9,25 @@
 <script>
 export default {
   name: 'ActionButton', 
-  props: ['text']
+  props: ['text', 'isPrimary'],
+  computed: {
+    buttonClass() {
+      return {primary: this.isPrimary, secondary: !this.isPrimary}
+    }
+  }
 }
 </script>
+
+<style scoped>
+button {
+  @apply rounded px-5 py-2 font-medium
+}
+
+.primary {
+  @apply border-0 text-white bg-brand-blue-1 hover:shadow-blue
+}
+
+.secondary {
+  @apply text-brand-blue-2 bg-transparent hover:text-white hover:bg-brand-blue-2
+}
+</style>
