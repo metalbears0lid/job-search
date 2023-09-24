@@ -1,18 +1,16 @@
 <template>
-  <button
-    :class="buttonClass"
-  >
+  <button :class="buttonClass">
     {{ text }}
   </button>
 </template>
 
 <script>
 export default {
-  name: 'ActionButton', 
+  name: 'ActionButton',
   props: ['text', 'type'],
   computed: {
     buttonClass() {
-      return {[this.type]: true}
+      return { [this.type]: true }
     }
   }
 }
@@ -20,14 +18,14 @@ export default {
 
 <style scoped>
 button {
-  @apply rounded px-5 py-2 font-medium
+  @apply rounded px-5 py-2 font-medium;
 }
 
 .primary {
-  @apply border-0 text-white bg-brand-blue-1 hover:shadow-blue
+  @apply border-0 text-white bg-brand-blue-1 hover:shadow-blue;
 }
 
 .secondary {
-  @apply text-brand-blue-2 bg-transparent hover:text-white hover:bg-brand-blue-2
+  @apply text-brand-blue-2 bg-transparent hover:text-white hover:bg-brand-blue-2;
 }
 </style>
