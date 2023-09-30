@@ -14,7 +14,7 @@
 
       <div class="flex h-full flex-1 items-center pl-3">
         <label class="absolute left-0 -top-10">Where></label>
-        <text-input placeholder="Los Angeles" :value="location" v-model="location" />
+        <text-input placeholder="Los Angeles" v-model="location" />
       </div>
     </div>
 
