@@ -4,7 +4,7 @@
     <div class="flex h-full flex-1 flex-nowrap text-base font-light">
       <div class="flex h-full flex-1 items-center pr-3">
         <label class="absolute left-0 -top-10">Role</label>
-        <text-input placeholder="Software engineer" @handle-input="updateRole" />
+        <text-input placeholder="Software engineer" @handle-input="role = $event" />
       </div>
 
       <span
@@ -14,7 +14,7 @@
 
       <div class="flex h-full flex-1 items-center pl-3">
         <label class="absolute left-0 -top-10">Where></label>
-        <text-input placeholder="Los Angeles" @handle-input="updateLocation" />
+        <text-input placeholder="Los Angeles" @handle-input="location = $event" />
       </div>
     </div>
 
@@ -33,14 +33,6 @@ export default {
     return {
       role: '',
       location: ''
-    }
-  },
-  methods: {
-    updateRole(payload) {
-      this.role = payload
-    },
-    updateLocation(payload) {
-      this.location = payload
     }
   }
 }
