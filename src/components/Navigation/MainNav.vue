@@ -19,8 +19,8 @@
           </nav>
         </div>
         <div class="ml-auto flex h-full items-center">
-          <profile-image v-if="userStore.isLoggedIn" />
-          <action-button v-else text="Sign In" type="primary" @click="userStore.loginUser" />
+          <profile-image v-if="isLoggedIn" />
+          <action-button v-else text="Sign In" type="primary" @click="loginUser" />
           <h2 class="ml-8 flex h-full items-center">Developed by {{ author }}</h2>
         </div>
       </div>
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { mapStores } from 'pinia'
+import { mapStores, mapState, mapActions } from 'pinia'
 import { useUserStore } from '@/stores/user'
 
 import ActionButton from '@/components/Shared/ActionButton.vue'
@@ -49,18 +49,20 @@ export default {
       company: 'Solid Jobs',
       author: 'metalbearsolid',
       url: 'https://careers.google.com',
-      menuItems: ['Teams', 'Locations', 'Life at Solid Corp', 'How we hire', 'Students', 'Jobs'],
-      isLoggedIn: false
+      menuItems: ['Teams', 'Locations', 'Life at Solid Corp', 'How we hire', 'Students', 'Jobs']
     }
   },
   computed: {
-    ...mapStores(useUserStore),
+    ...mapState(useUserStore, ['isLoggedIn']),
     headerHeightClass() {
       return {
-        'h-16': !this.userStore.isLoggedIn,
-        'h-32': this.userStore.isLoggedIn
+        'h-16': !this.isLoggedIn,
+        'h-32': this.isLoggedIn
       }
     }
+  },
+  methods: {
+    ...mapActions(useUserStore, ['loginUser'])
   }
 }
 </script>
