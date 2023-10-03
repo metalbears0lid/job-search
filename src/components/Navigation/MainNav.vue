@@ -5,7 +5,9 @@
         class="flex flex-nowrap h-full border-b border-solid border-brand-gray-1 px-8 justify-between"
       >
         <div class="flex">
-          <a :href="url" class="flex h-full items-center text-xl">{{ company }}</a>
+          <router-link :to="{ name: 'Home' }" class="flex h-full items-center text-xl">{{
+            company
+          }}</router-link>
           <nav class="ml-12">
             <ul class="flex h-full list-none">
               <li
@@ -48,7 +50,6 @@ export default {
     return {
       company: 'Solid Jobs',
       author: 'metalbearsolid',
-      url: 'https://careers.google.com',
       menuItems: ['Teams', 'Locations', 'Life at Solid Corp', 'How we hire', 'Students', 'Jobs']
     }
   },
