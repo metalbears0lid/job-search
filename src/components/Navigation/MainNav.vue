@@ -12,10 +12,10 @@
             <ul class="flex h-full list-none">
               <li
                 v-for="menuItem in menuItems"
-                :key="menuItem"
+                :key="menuItem.text"
                 class="flex ml-9 h-full items-center first:ml-0"
               >
-                <a href="">{{ menuItem }}</a>
+                <router-link :to="menuItem.url">{{ menuItem.text }}</router-link>
               </li>
             </ul>
           </nav>
@@ -50,7 +50,14 @@ export default {
     return {
       company: 'Solid Jobs',
       author: 'metalbearsolid',
-      menuItems: ['Teams', 'Locations', 'Life at Solid Corp', 'How we hire', 'Students', 'Jobs']
+      menuItems: [
+        { text: 'Teams', url: '/' },
+        { text: 'Locations', url: '/' },
+        { text: 'Life at Solid Corp', url: '/' },
+        { text: 'How we hire', url: '/' },
+        { text: 'Students', url: '/' },
+        { text: 'Jobs', url: '/jobs/results' }
+      ]
     }
   },
   computed: {
