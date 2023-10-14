@@ -24,11 +24,10 @@ export default {
       jobs: []
     }
   },
-  beforeMount() {
-    axios.get('http://localhost:3000/jobs').then((response) => {
-      this.jobs = response.data
-      console.log('Received jobs data from backend', this.jobs)
-    })
+  async beforeMount() {
+    const response = await axios.get('http://localhost:3000/jobs')
+    this.jobs = response.data
+    console.log('Received jobs data from backend', this.jobs)
   }
 }
 </script>
