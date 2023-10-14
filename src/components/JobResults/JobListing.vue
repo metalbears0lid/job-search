@@ -5,14 +5,14 @@
       class="mx-auto block rounded border border-solid border-brand-gray-2 bg-white hover:shadow-gray"
     >
       <div class="mx-8 border-b border-solid border-brand-gray-2 pt-5 pb-2">
-        <h2 class="mb-2 text-2xl">Technical Program Manager, Perception, Augmented Reality</h2>
+        <h2 class="mb-2 text-2xl">{{ title }}</h2>
 
         <div class="flex flex-row align-middle">
           <div class="mr-5">
-            <span>Solid</span>
+            <span>{{ organization }}</span>
           </div>
           <div>
-            <span>San Francisco, CA, USA</span>
+            <span v-for="location in locations">{{ location }}</span>
           </div>
         </div>
 
@@ -21,7 +21,7 @@
             <h3 class="mt-1 mb-2">Qualifications:</h3>
             <div>
               <ul class="list-disc pl-8">
-                <li>Bachelor's degree or equivalent practical experience</li>
+                <li v-for="qual in qualifications">{{ qual }}</li>
                 <li>5 years of experience in program management</li>
                 <li>
                   Experience analyzing data through querying database (e.g. SQL) using spreadsheet
@@ -42,6 +42,12 @@
 
 <script>
 export default {
-  name: 'JobListing'
+  name: 'JobListing',
+  props: {
+    title: String,
+    organization: String,
+    locations: Array,
+    qualifications: Array
+  }
 }
 </script>
