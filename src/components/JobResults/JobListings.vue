@@ -29,17 +29,13 @@
 </template>
 
 <script>
-import axios from 'axios'
+import { mapActions, mapState } from 'pinia'
 import JobListing from '@/components/JobResults/JobListing.vue'
+import { useJobsStore } from '@/stores/jobs'
 
 export default {
   name: 'JobListings',
   components: { JobListing },
-  data() {
-    return {
-      jobs: []
-    }
-  },
   computed: {
     currentPage() {
       return Number.parseInt(this.$route.query.page || '1')
@@ -48,20 +44,24 @@ export default {
       const prevPage = this.currentPage - 1
       return prevPage >= 1 ? prevPage : undefined
     },
-    nextPage() {
-      const nextPage = this.currentPage + 1
-      const maxPage = this.jobs.length / 10
-      return nextPage <= maxPage ? nextPage : undefined
-    },
-    displayedJobs() {
-      const page = this.currentPage
-      return this.jobs.slice(10 * (page - 1), 10 * page)
-    }
+    ...mapState(useJobsStore, {
+      jobs: 'jobs',
+      nextPage() {
+        const nextPage = this.currentPage + 1
+        const maxPage = this.jobs.length / 10
+        return nextPage <= maxPage ? nextPage : undefined
+      },
+      displayedJobs() {
+        const page = this.currentPage
+        return this.jobs.slice(10 * (page - 1), 10 * page)
+      }
+    })
   },
-  async beforeMount() {
-    const response = await axios.get('http://localhost:3000/jobs')
-    this.jobs = response.data
-    console.log('Received jobs data from backend', this.jobs)
+  async mounted() {
+    this.fetchJobs()
+  },
+  methods: {
+    ...mapActions(useJobsStore, ['fetchJobs'])
   }
 }
 </script>
