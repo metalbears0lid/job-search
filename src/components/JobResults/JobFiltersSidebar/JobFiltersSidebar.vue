@@ -8,28 +8,9 @@
         </div>
       </div>
 
-      <collapsible-accordion>
-        <div class="mt-5">
-          <fieldset>
-            <ul class="flex flex-wrap">
-              <li class="h-8 w-1/2">
-                <input id="VueTube" type="checkbox" class="mr-3" />
-                <label for="VueTube">VueTube</label>
-              </li>
-
-              <li class="h-8 w-1/2">
-                <input id="Between Vue and Me" type="checkbox" class="mr-3" />
-                <label for="Between Vue and Me">Between Vue</label>
-              </li>
-
-              <li class="h-8 w-1/2">
-                <input id="Et Vue Brute" type="checkbox" class="mr-3" />
-                <label for="Et Vue Brute">Et Vue Brute</label>
-              </li>
-            </ul>
-          </fieldset>
-        </div>
-      </collapsible-accordion>
+      <collapsible-accordion header="Degree" />
+      <collapsible-accordion header="Job Type">Placeholder</collapsible-accordion>
+      <job-filters-sidebar-organizations />
     </section>
   </div>
 </template>
@@ -37,9 +18,10 @@
 <script>
 import ActionButton from '@/components/Shared/ActionButton.vue'
 import CollapsibleAccordion from '@/components/Shared/CollapsibleAccordion.vue'
+import JobFiltersSidebarOrganizations from '@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarOrganizations.vue'
 
 export default {
   name: 'JobFiltersSidebar',
-  components: { ActionButton, CollapsibleAccordion }
+  components: { ActionButton, CollapsibleAccordion, JobFiltersSidebarOrganizations }
 }
 </script>
