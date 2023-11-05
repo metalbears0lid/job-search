@@ -1,5 +1,6 @@
 <template>
   <main class="flex-auto bg-brand-gray-2 p-8">
+    <job-listings-table />
     <ol>
       <job-listing v-for="job in displayedJobs" :key="job.id" :job="job" />
     </ol>
@@ -31,11 +32,12 @@
 <script>
 import { mapActions, mapState } from 'pinia'
 import JobListing from '@/components/JobResults/JobListing.vue'
+import JobListingsTable from '@/components/JobResults/JobListingsTable.vue'
 import { useJobsStore } from '@/stores/jobs'
 
 export default {
   name: 'JobListings',
-  components: { JobListing },
+  components: { JobListing, JobListingsTable },
   computed: {
     currentPage() {
       return Number.parseInt(this.$route.query.page || '1')
